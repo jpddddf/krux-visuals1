@@ -23,8 +23,12 @@ public class SettingsScreen extends Screen {
         int y = this.height / 2 - 40;
         addDrawableChild(new CrystalSlider(x, y, w, 20));
         addDrawableChild(new FogSlider(x, y + 26, w, 20));
+        addDrawableChild(ButtonWidget.builder(selfText(), b -> {
+            CrystalConfig.showSelf = !CrystalConfig.showSelf;
+            b.setMessage(selfText());
+        }).dimensions(x, y + 52, w, 20).build());
         addDrawableChild(ButtonWidget.builder(Text.literal("Done"), b -> close())
-                .dimensions(x, y + 62, w, 20).build());
+                .dimensions(x, y + 84, w, 20).build());
     }
 
     @Override
@@ -32,6 +36,10 @@ public class SettingsScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
         context.drawCenteredTextWithShadow(this.textRenderer, this.title,
                 this.width / 2, this.height / 2 - 62, 0xFFFFFF);
+    }
+
+    private static Text selfText() {
+        return Text.literal("Show on myself: " + (CrystalConfig.showSelf ? "ON" : "OFF"));
     }
 
     @Override

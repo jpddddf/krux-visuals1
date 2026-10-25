@@ -16,6 +16,7 @@ public final class CrystalConfig {
 
     public static int crystalCount = 2;
     public static double fogDensity = 1.0;    // 1.0 = 100%
+    public static boolean showSelf = true;    // draw effects around yourself too
 
     private CrystalConfig() {}
 
@@ -31,6 +32,7 @@ public final class CrystalConfig {
             props.load(in);
             int c = Integer.parseInt(props.getProperty("crystalCount", "2"));
             double f = Double.parseDouble(props.getProperty("fogDensity", "1.0"));
+            showSelf = Boolean.parseBoolean(props.getProperty("showSelf", "true"));
             crystalCount = Math.max(MIN_CRYSTALS, Math.min(MAX_CRYSTALS, c));
             fogDensity = Math.max(0.0, Math.min(MAX_FOG, f));
         } catch (Exception ignored) {
@@ -43,6 +45,7 @@ public final class CrystalConfig {
             Properties props = new Properties();
             props.setProperty("crystalCount", Integer.toString(crystalCount));
             props.setProperty("fogDensity", Double.toString(fogDensity));
+            props.setProperty("showSelf", Boolean.toString(showSelf));
             props.store(out, "Crystal Aura settings");
         } catch (IOException ignored) {
             // not fatal

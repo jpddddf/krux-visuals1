@@ -1,10 +1,10 @@
 # Crystal Aura (Fabric, Minecraft 1.21.4, client-only)
 
-Orbiting crystals, pink fog and sparkles around other players. Only you see it.
+Orbiting crystals, pink fog and sparkles around other players and (optionally, on by default) around yourself. Only you see it. Press F5 for third person to see the crystals on yourself.
 
 - K: toggle crystals
 - J: toggle atmosphere (fog + sparkles)
-- Right Shift: settings screen (number of crystals 1-6, fog density 0-300%)
+- Right Shift: settings screen (crystals 1-6, fog density 0-300%, show on myself)
 
 All keys can be rebound under Options > Controls > Crystal Aura.
 Settings are saved in `.minecraft/config/crystalaura.properties`.

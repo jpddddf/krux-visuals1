@@ -15,7 +15,8 @@ import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
 
 /**
- * Client-only visuals around other players within RANGE blocks of you.
+ * Client-only visuals around other players within RANGE blocks of you
+ * (and around yourself when "Show on myself" is on - the default, so it also works in singleplayer).
  *   K           - toggle orbiting crystals
  *   J           - toggle atmosphere: pink fog, haze hugging the player, sparkles
  *   Right Shift - settings screen (number of crystals, fog density)
@@ -113,7 +114,8 @@ public class CrystalAuraClient implements ClientModInitializer {
 
         int drawn = 0;
         for (AbstractClientPlayerEntity other : mc.world.getPlayers()) {
-            if (other == mc.player || other.isSpectator() || other.isInvisible()) continue;
+            if (other == mc.player && !CrystalConfig.showSelf) continue;
+            if (other.isSpectator() || other.isInvisible()) continue;
             if (other.squaredDistanceTo(mc.player) > RANGE * RANGE) continue;
             if (doCrystals) drawCrystals(mc.world, other);
             if (doFog) drawFog(mc.world, other);
