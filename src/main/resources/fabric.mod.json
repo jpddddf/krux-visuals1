@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "crystalaura",
+  "version": "${version}",
+  "name": "Crystal Aura",
+  "description": "Client-side visuals: orbiting crystals, pink fog and sparkles around nearby players.",
+  "authors": [],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.example.crystals.CrystalAuraClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
